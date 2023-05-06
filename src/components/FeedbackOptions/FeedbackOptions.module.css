@@ -1,0 +1,27 @@
+.Container {
+
+    display: flex;
+    height: 50px;
+    gap: 10px;
+
+}
+
+.button {
+    padding: 5px 5px;
+    width: 100px;
+    text-transform: capitalize;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    box-shadow: rgba(73, 73, 73, 0.388) 0px 5px 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    font-size: 18px;
+
+
+}
+
+.button:hover {
+    scale: 1.1;
+}
+

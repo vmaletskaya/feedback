@@ -1,0 +1,12 @@
+.container {
+    height: 350px;
+    display: grid;
+    align-content: start;
+}
+
+.notification {
+    font-weight: 600;
+    font-size: 35px;
+    border: none;
+
+}
