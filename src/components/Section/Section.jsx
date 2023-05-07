@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './Section.module.css';
-export default function Title({ title, children }) {
+export default function Section({ title, children }) {
   return (
     <section >
       <h1 className={css.title}> {title}</h1>
@@ -8,6 +8,6 @@ export default function Title({ title, children }) {
     </section>
   );
 }
-Title.propTypes = {
+Section.propTypes = {
   title: PropTypes.string,
 };

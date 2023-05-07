@@ -6,7 +6,6 @@ export default class Statistics extends Component {
   render() {
     return (
       <ul className={css.list}>
-        <h2>Statistics </h2>
         {Object.entries(this.props).map(item => {
           if (item[0] === 'positivePercentage') {
             return (

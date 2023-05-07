@@ -42,7 +42,10 @@ export class App extends Component {
             options={this.state}
             onLeaveFeedback={this.onLeaveFeedback}
           />
-          {Object.values(this.state).some(values => values !== 0) ? (
+        </Section>
+       
+        {Object.values(this.state).some(values => values !== 0) ? (
+          <Section title ={'Statistics'}>
             <Statistics
               good={good}
               neutral={neutral}
@@ -52,10 +55,12 @@ export class App extends Component {
                 this.state
               )}
             />
+           </Section>
+            
           ) : (
             <Notification message="There is no feedback" />
           )}
-        </Section>
+        
       </div>
     );
   }
