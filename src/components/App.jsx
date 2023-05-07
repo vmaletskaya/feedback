@@ -37,7 +37,7 @@ export class App extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <div className={css.app}>
-        <Section title="Please, leave your feedback" children>
+        <Section title="Please, leave your feedback">
           <FeedbackOptions
             options={this.state}
             onLeaveFeedback={this.onLeaveFeedback}
