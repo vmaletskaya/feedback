@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import css from './FeedbackOptions.module.css';
 const shortid = require('shortid');
 
-class Buttons extends Component {
+class FeedbackOptions extends Component {
 
   render() {
 
@@ -26,5 +27,9 @@ class Buttons extends Component {
   }
 }
 
+FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.object.isRequired,
+};
 
-export default Buttons;
+export default FeedbackOptions;
