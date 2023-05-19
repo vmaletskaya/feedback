@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import css from './FeedbackOptions.module.css';
 const shortid = require('shortid');
 
-class FeedbackOptions extends Component {
+export default function FeedbackOptions(props){
 
-  render() {
-
-    const { options, onLeaveFeedback } = this.props;
+    const { options, onLeaveFeedback } = props;
     return (
       <div className={css.Container}>
         {Object.entries(options).map(b =>
@@ -24,7 +22,7 @@ class FeedbackOptions extends Component {
         }
       </div>
     );
-  }
+  
 }
 
 FeedbackOptions.propTypes = {
@@ -32,4 +30,3 @@ FeedbackOptions.propTypes = {
   options: PropTypes.object.isRequired,
 };
 
-export default FeedbackOptions;

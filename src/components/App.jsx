@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState} from 'react';
 import css from './App.module.css';
 
 
@@ -8,52 +8,60 @@ import Statistics from './Statistics/Statistics';
 import Notification from './Notification/Notification';
 
 
-export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+export default function App() {
+  
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+  
+  
+  let sum = 0;
+  const values = {good, neutral, bad};
 
-  sum = 0;
-
-  countTotalFeedback(data) {
-    return (this.sum = Object.values(data).reduce(
+  const countTotalFeedback = data =>  {
+    return (sum = Object.values(data).reduce(
       (acc, number) => acc + number
     ));
   }
 
-  countPositiveFeedbackPercentage(data) {
-    return data.good !== 0 ? Math.round((data.good / this.sum) * 100) : 0;
+  const countPositiveFeedbackPercentage = data => {
+    return data.good !== 0 ? Math.round((data.good / sum) * 100) : 0;
   }
 
-  onLeaveFeedback = e => {
-    this.setState(prevState => {
-      return (prevState[e.target.name] += 1);
-    });
+ const onLeaveFeedback = (e) => {
+  const feedbackCounters = {
+    good: setGood,
+    bad: setBad,
+    neutral: setNeutral,
   };
 
-  render() {
-    const { good, neutral, bad } = this.state;
+  const { name } = e.target;
+  const updateFeedbackCounter = feedbackCounters[name];
+  
+  if (updateFeedbackCounter) {
+    updateFeedbackCounter((prev) => prev + 1);
+  }
+};
+
+
+   
     return (
       <div className={css.app}>
         <Section title="Please, leave your feedback">
           <FeedbackOptions
-            options={this.state}
-            onLeaveFeedback={this.onLeaveFeedback}
+            options={values}
+            onLeaveFeedback={onLeaveFeedback}
           />
         </Section>
        
-        {Object.values(this.state).some(values => values !== 0) ? (
+        {Object.values(values).some(values => values !== 0) ? (
           <Section title ={'Statistics'}>
             <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback(this.state)}
-              positivePercentage={this.countPositiveFeedbackPercentage(
-                this.state
-              )}
+              total={countTotalFeedback(values)}
+              positivePercentage={countPositiveFeedbackPercentage(values)}
             />
            </Section>
             
@@ -63,5 +71,5 @@ export class App extends Component {
         
       </div>
     );
-  }
+  
 }
